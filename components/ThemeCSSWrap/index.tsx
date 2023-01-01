@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { useThemeValue } from "../../contexts/ThemeContext";
 
 type ThemeCSSWrapProps = {
@@ -8,7 +8,13 @@ type ThemeCSSWrapProps = {
 const ThemeCSSWrap = ({ children }: ThemeCSSWrapProps) => {
   const theme = useThemeValue();
 
-  return <div className={`${theme === "dark" ? "dark" : ""}`}>{children}</div>;
+  useEffect(() => {
+    if (theme === "dark") document.body.classList.add("dark");
+    else document.body.classList.remove("dark");
+  }, [theme]);
+
+  // return <div className={`${theme === "dark" ? "dark" : ""}`}>{children}</div>;
+  return <>{children}</>;
 };
 
 export default ThemeCSSWrap;
