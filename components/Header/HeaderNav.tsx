@@ -5,7 +5,7 @@ type HeaderNavProps = {};
 
 const HeaderNav = ({}: HeaderNavProps) => {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 items-center">
       <Link href="/login">Login</Link>
       <ChangeThemeButton />
     </div>
