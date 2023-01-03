@@ -12,11 +12,9 @@ const ChangeThemeButton = ({ ...injectedProps }: ChangeThemeButtonProps) => {
   const { theme, toggleTheme } = useThemeState();
 
   return (
-    <div {...injectedProps}>
-      <button onClick={toggleTheme}>
-        {theme === "dark" ? <MoonIcon /> : <SunIcon />}
-      </button>
-    </div>
+    <button onClick={toggleTheme}>
+      {theme === "dark" ? <MoonIcon /> : <SunIcon />}
+    </button>
   );
 };
 
