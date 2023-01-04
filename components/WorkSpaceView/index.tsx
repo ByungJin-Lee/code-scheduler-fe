@@ -36,7 +36,12 @@ const WorkSpaceView = ({
 
   return (
     <div className={className}>
-      <Select value={perPage} setValue={setPerPage} options={selectOptions} />
+      <Select
+        value={perPage}
+        setValue={setPerPage}
+        options={selectOptions}
+        className="p-1 px-2 w-[100px]"
+      />
       {displayedItems &&
         displayedItems.map((item) => (
           <WorkSpaceItem key={item.id} data={item} />
