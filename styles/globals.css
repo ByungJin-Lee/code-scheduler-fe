@@ -5,3 +5,9 @@
 .dark {
   @apply bg-gray-800 text-zinc-50;
 }
+
+@layer components {
+  .content {
+    @apply mx-auto w-[450px];
+  }
+}

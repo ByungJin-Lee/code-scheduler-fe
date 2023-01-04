@@ -13,6 +13,8 @@ const MainTemplate = ({ children }: MainTemplateProps) => {
   );
 };
 
-MainTemplate.defaultProps = {};
+MainTemplate.defaultProps = {
+  children: "",
+};
 
 export default MainTemplate;
