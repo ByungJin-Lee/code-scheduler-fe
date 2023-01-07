@@ -1,6 +1,7 @@
 import { ScheduledItem } from "../@types";
 import Divider from "../components/Divider";
 import WorkSpaceController from "../components/WorkSpaceController";
+import WorkSpaceNewSchedule from "../components/WorkSpaceNewSchedule";
 import WorkSpaceView from "../components/WorkSpaceView";
 import useLayered from "../hooks/useLayeredItems";
 import MainTemplate from "../templates/MainTemplate";
@@ -10,13 +11,13 @@ export default function WorkSpace() {
 
   return (
     <MainTemplate>
+      <WorkSpaceNewSchedule />
       <WorkSpaceController
-        className="content"
         setOriginItems={origin.set}
         setViewItems={view.set}
       />
       <Divider className="my-3" />
-      <WorkSpaceView className="content" items={view.item} />
+      <WorkSpaceView items={view.item} />
     </MainTemplate>
   );
 }
