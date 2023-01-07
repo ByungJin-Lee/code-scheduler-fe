@@ -40,7 +40,7 @@ const Select = ({ options, value, setValue, className }: SelectProps) => {
           {options.find((opt) => opt.value === value)?.display}
         </SelectItem>
         <span
-          className={`will-change-auto duration-200 ${
+          className={`transition-transform duration-200 ${
             opened ? "rotate-180" : "rotate-0"
           }`}
         >
