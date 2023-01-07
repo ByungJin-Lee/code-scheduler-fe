@@ -1,13 +1,16 @@
 import { ReactNode } from "react";
 
-type ModalProps = {
+export type ModalProps = {
   opened: boolean;
   close(): void;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
-  animation: boolean;
-  duration: number;
+  animation?: boolean;
+  duration?: number;
+  ignoreAnywhereClick: boolean;
 };
+
+const ignoreClick = () => {};
 
 const Modal = ({
   opened,
@@ -16,18 +19,17 @@ const Modal = ({
   className,
   animation,
   duration,
+  ignoreAnywhereClick,
 }: ModalProps) => {
   if (!close) throw Error("Need 'close' function to use Modal.");
 
   return (
     <div
-      className={`${
+      className={`fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-20 ${className} ${
         !opened ? "opacity-0 pointer-events-none" : "opacity-100"
-      } absolute top-0 left-0 flex justify-center items-center w-full h-full ${className} ${
-        animation ? `will-change-auto` : ""
-      }`}
+      } ${animation ? `will-change-auto` : ""}`}
       style={{ transitionDuration: `${duration}ms` }}
-      onClick={close}
+      onClick={ignoreAnywhereClick ? ignoreClick : close}
     >
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>
@@ -38,7 +40,8 @@ Modal.defaultProps = {
   children: "",
   className: "",
   animation: false,
-  duration: 300,
+  duration: 0,
+  ignoreAnywhereClick: false,
 };
 
 export default Modal;
