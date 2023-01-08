@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import getLanguagePack from "../langs";
 
 export type ContextState = {
   theme: "dark" | "light";
@@ -15,7 +14,7 @@ const ThemeContext = createContext<ContextState>(defaultContextState);
 
 function useThemeState(): ContextState {
   const state = useContext(ThemeContext);
-  if (!state) throw Error(getLanguagePack().CONTEXT_ERROR);
+  if (!state) throw Error("Context Error!");
   return state;
 }
 

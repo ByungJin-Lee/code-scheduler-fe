@@ -35,7 +35,7 @@ const WorkSpaceView = ({
   }, [page, perPage, items, pagination]);
 
   return (
-    <div className={className}>
+    <div className={`content ${className}`}>
       <Select
         value={perPage}
         setValue={setPerPage}

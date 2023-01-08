@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ContextState,
   defaultContextState,
@@ -16,10 +16,20 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {
-      if (prev === "light") return "dark";
-      return "light";
+      const updated = prev === "light" ? "dark" : "light";
+
+      window.localStorage.setItem("bgMode", updated);
+
+      return updated;
     });
   }, [setTheme]);
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("bgMode");
+    if (storedTheme && (storedTheme === "dark" || storedTheme === "light")) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   return (
     <ThemeContext.Provider
