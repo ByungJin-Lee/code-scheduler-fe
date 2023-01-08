@@ -14,7 +14,7 @@ const WorkSpaceNewSchedule = ({}: WorkSpaceNewScheduleProps) => {
   return (
     <>
       <div
-        className="content h-24 flex items-center justify-center flex-col"
+        className="content flex items-center justify-center flex-col"
         onClick={handleClick}
       >
         <div className="rounded-full bg-lime-300">
