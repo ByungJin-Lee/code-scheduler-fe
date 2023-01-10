@@ -7,7 +7,7 @@ export type ModalProps = {
   className?: string;
   animation?: boolean;
   duration?: number;
-  ignoreAnywhereClick: boolean;
+  ignoreAnywhereClick?: boolean;
 };
 
 const ignoreClick = () => {};
@@ -16,10 +16,10 @@ const Modal = ({
   opened,
   close,
   children,
-  className,
-  animation,
-  duration,
-  ignoreAnywhereClick,
+  className = "",
+  animation = false,
+  duration = 0,
+  ignoreAnywhereClick = false,
 }: ModalProps) => {
   if (!close) throw Error("Need 'close' function to use Modal.");
 
@@ -34,14 +34,6 @@ const Modal = ({
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </div>
   );
-};
-
-Modal.defaultProps = {
-  children: "",
-  className: "",
-  animation: false,
-  duration: 0,
-  ignoreAnywhereClick: false,
 };
 
 export default Modal;
