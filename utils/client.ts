@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "",
+  baseURL: "https://lj-cnc-worker.kro.kr/api",
+  withCredentials: true,
 });
 
 client.interceptors.request.use((v) => {
@@ -13,3 +14,5 @@ client.interceptors.response.use((v) => {
 });
 
 export default client;
+
+export const isLogin = () => {};
