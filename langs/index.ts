@@ -7,6 +7,7 @@ export interface ILanguage {
   CONTEXT_ERROR: string;
   CONFIRM_TEXT: string;
   CANCEL_TEXT: string;
+  NEW_SCHEDULE: string;
 }
 
 export default function getLanguagePack(lang: LangType = "kor"): ILanguage {

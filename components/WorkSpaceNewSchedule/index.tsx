@@ -1,10 +1,13 @@
 import { useState } from "react";
 import AddFolderIcon from "../Icons/AddFolderIcon";
 import ScheduleModal from "../ScheduleModal";
+import { useLanguagePack } from "../../contexts/LanguageContext";
 
 type WorkSpaceNewScheduleProps = {};
 
 const WorkSpaceNewSchedule = ({}: WorkSpaceNewScheduleProps) => {
+  const { NEW_SCHEDULE } = useLanguagePack();
+
   const [open, setOpen] = useState(false);
 
   const handleClick = () => setOpen(true);
@@ -20,7 +23,7 @@ const WorkSpaceNewSchedule = ({}: WorkSpaceNewScheduleProps) => {
         <div className="rounded-full bg-lime-300">
           <AddFolderIcon />
         </div>
-        <p>새 스케쥴 추가하기...</p>
+        <p>{NEW_SCHEDULE}</p>
       </div>
       <ScheduleModal opened={open} close={handleClose} />
     </>
