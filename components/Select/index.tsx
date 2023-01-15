@@ -42,7 +42,7 @@ const Select = ({ options, value, setValue, className }: SelectProps) => {
         <span
           className={`transition-transform duration-200 ${
             opened ? "rotate-180" : "rotate-0"
-          }`}
+          } z-[-1]`}
         >
           <ArrowDownIcon />
         </span>

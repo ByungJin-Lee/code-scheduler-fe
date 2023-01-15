@@ -17,18 +17,21 @@ const ConfirmModal = ({
 
   return (
     <Modal {...modalProps}>
-      <div className=" bg-slate-50 dark:bg-slate-700 rounded-md">
+      <div className=" bg-white dark:bg-slate-700 rounded-md">
         {children}
         <div className="flex p-2 justify-end gap-3 sticky bottom-0 border-t border-slate-400">
           <button
-            className="rounded-sm px-2 py-1 bg-red-200 dark:bg-red-300"
             onClick={onCancel}
+            type="button"
+            className="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mr-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800"
           >
             {CANCEL_TEXT}
           </button>
+
           <button
-            className="bg-blue-300 dark:bg-blue-500 rounded-sm px-2 py-1"
+            type="button"
             onClick={onConfirm}
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
             {CONFIRM_TEXT}
           </button>

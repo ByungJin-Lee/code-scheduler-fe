@@ -11,7 +11,7 @@ const WorkSpaceController = ({
   setViewItems,
   className,
 }: WorkSpaceControllerProps) => {
-  return <div className={`content ${className}`}>hello</div>;
+  return <div className={`content ${className}`}></div>;
 };
 
 WorkSpaceController.defaultProps = {
