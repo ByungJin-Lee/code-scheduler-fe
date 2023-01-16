@@ -1,3 +1,4 @@
+import { Card } from "flowbite-react";
 import { useMemo, useState } from "react";
 import { ScheduledItem } from "../../@types";
 import { getPageLimit, getItemScope } from "../../utils/page";
@@ -23,11 +24,6 @@ const WorkSpaceView = ({
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(perCount);
 
-  const selectOptions = useMemo(
-    () => [makeOption(15, "15개"), makeOption(30, "30개")],
-    []
-  );
-
   const displayedItems = useMemo(() => {
     if (!pagination) return items;
     const { start, end } = getItemScope(items.length, page, perPage);
@@ -36,16 +32,19 @@ const WorkSpaceView = ({
 
   return (
     <div className={`content ${className}`}>
-      <Select
-        value={perPage}
-        setValue={setPerPage}
-        options={selectOptions}
-        className="p-1 px-2 w-[100px]"
-      />
-      {displayedItems &&
-        displayedItems.map((item) => (
-          <WorkSpaceItem key={item.id} data={item} />
-        ))}
+      <Card>
+        <div className="flow-root">
+          <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+            {displayedItems &&
+              displayedItems.map((item) => (
+                <li key={item.id} className="py-3 sm:py-4">
+                  <WorkSpaceItem data={item} />
+                </li>
+              ))}
+          </ul>
+        </div>
+      </Card>
+
       {pagination && !hidePagination && (
         <Pagination
           limit={getPageLimit(items.length, perPage)}

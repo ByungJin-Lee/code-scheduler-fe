@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-.dark {
-  @apply bg-gray-800 text-zinc-50;
+body {
+  @apply bg-white;
 }
 
-body * {
-  background: white;
+.dark {
+  @apply bg-gray-800 text-zinc-50;
 }
 
 body.dark * {

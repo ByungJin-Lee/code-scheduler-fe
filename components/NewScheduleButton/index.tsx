@@ -3,9 +3,9 @@ import AddFolderIcon from "../Icons/AddFolderIcon";
 import ScheduleModal from "../ScheduleModal";
 import { useLanguagePack } from "../../contexts/LanguageContext";
 
-type WorkSpaceNewScheduleProps = {};
+type NewScheduleButtonProps = {};
 
-const WorkSpaceNewSchedule = ({}: WorkSpaceNewScheduleProps) => {
+const NewScheduleButton = ({}: NewScheduleButtonProps) => {
   const { NEW_SCHEDULE } = useLanguagePack();
 
   const [open, setOpen] = useState(false);
@@ -16,20 +16,19 @@ const WorkSpaceNewSchedule = ({}: WorkSpaceNewScheduleProps) => {
 
   return (
     <>
-      <div
-        className="content flex items-center justify-center flex-col"
+      <button
         onClick={handleClick}
+        type="button"
+        className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
       >
-        <div className="rounded-full bg-lime-300">
-          <AddFolderIcon />
-        </div>
-        <p>{NEW_SCHEDULE}</p>
-      </div>
+        {NEW_SCHEDULE}
+      </button>
+
       <ScheduleModal opened={open} close={handleClose} />
     </>
   );
 };
 
-WorkSpaceNewSchedule.defaultProps = {};
+NewScheduleButton.defaultProps = {};
 
-export default WorkSpaceNewSchedule;
+export default NewScheduleButton;

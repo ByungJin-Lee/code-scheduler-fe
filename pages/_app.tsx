@@ -4,6 +4,7 @@ import ThemeProvider from "../components/ThemeProvider";
 import ThemeCSSWrap from "../components/ThemeCSSWrap";
 import LanguageProvider from "../components/LanguageProvider";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { useEffect } from "react";
 
 const client = new QueryClient();
 
