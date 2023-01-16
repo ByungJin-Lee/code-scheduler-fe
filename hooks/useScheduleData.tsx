@@ -18,7 +18,7 @@ function handle(
       setData((prev) => ({ ...prev, description }));
     },
     setNext(next: number) {
-      setData((prev) => ({ ...prev, next: next / 1000 }));
+      setData((prev) => ({ ...prev, next: Math.trunc(next / 1000) }));
     },
     setCode(code: string) {
       setData((prev) => ({ ...prev, code }));
@@ -30,7 +30,7 @@ export default function useScheduleData(
   initial: CreateScheduleVariablesType = {
     name: "",
     period: undefined,
-    next: Date.now() / 1000 + 60,
+    next: Math.trunc(Date.now() / 1000) + 60,
     description: "",
     active: true,
     code: "",
