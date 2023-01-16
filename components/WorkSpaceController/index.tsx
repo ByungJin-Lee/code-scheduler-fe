@@ -1,4 +1,5 @@
 import { ScheduledItem } from "../../@types";
+import NewScheduleButton from "../NewScheduleButton";
 
 type WorkSpaceControllerProps = {
   setOriginItems(items: ScheduledItem[]): void;
@@ -11,7 +12,11 @@ const WorkSpaceController = ({
   setViewItems,
   className,
 }: WorkSpaceControllerProps) => {
-  return <div className={`content ${className}`}></div>;
+  return (
+    <div className={`content mt-4 ${className}`}>
+      <NewScheduleButton />
+    </div>
+  );
 };
 
 WorkSpaceController.defaultProps = {

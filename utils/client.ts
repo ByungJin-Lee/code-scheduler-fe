@@ -16,11 +16,18 @@ client.interceptors.response.use(
   },
   (err) => {
     if (err.response.status === 401) {
-      Router.push("/login");
+      client
+        .post("/auth/refresh")
+        .then((e) => saveAuth(e.data.data.token))
+        .catch(() => {
+          Router.push("/login");
+        });
     }
   }
 );
 
 export default client;
 
-export const isLogin = () => {};
+export const saveAuth = (token: string) => {
+  client.defaults.headers.common["authorization"] = `Bearer ${token}`;
+};

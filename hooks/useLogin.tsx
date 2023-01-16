@@ -1,6 +1,6 @@
 import Router from "next/router";
 import { useMutation } from "react-query";
-import client from "../utils/client";
+import client, { saveAuth } from "../utils/client";
 import login, { LoginVariablesType } from "../utils/login";
 
 export default function useLogin() {
@@ -9,9 +9,7 @@ export default function useLogin() {
     {
       onSuccess: ({ data, ok }) => {
         if (ok) {
-          client.defaults.headers.common[
-            "authorization"
-          ] = `Bearer ${data.token}`;
+          saveAuth(data.token);
           Router.push("/");
         }
       },

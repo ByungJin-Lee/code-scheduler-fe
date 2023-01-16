@@ -1,23 +1,22 @@
 import { useRef, useState } from "react";
+import { IEvaluationResult } from "../../@types";
 import useCodeTest from "../../hooks/useCodeTest";
 import useCreateSchedule from "../../hooks/useCreateSchedule";
 import useScheduleData from "../../hooks/useScheduleData";
+import wrapOnChange from "../../utils/wrapOnChange";
 import ConfirmModal from "../ConfirmModal";
+import EvaluationResult from "../EvaluationResult";
 import { ModalProps } from "../Modal";
 import SchedulePicker from "../SchedulePicker";
 
 type ScheduleModalProps = {} & ModalProps;
-
-const wrapOnChange = (hlr: (value: any) => void) => (e: any) => {
-  hlr(e.target.value);
-};
 
 const ScheduleModal = ({ ...modalProps }: ScheduleModalProps) => {
   const handleCancel = () => modalProps.close();
 
   const handleConfirm = () => createMutate(data);
 
-  const [testOutput, setTestOutput] = useState(null);
+  const [testOutput, setTestOutput] = useState<IEvaluationResult | null>(null);
 
   const { mutate: testMutate } = useCodeTest(setTestOutput);
 
@@ -33,7 +32,7 @@ const ScheduleModal = ({ ...modalProps }: ScheduleModalProps) => {
       onConfirm={handleConfirm}
       {...modalProps}
     >
-      <div className="p-3 min-w-[330px] max-h-96 overflow-y-scroll">
+      <div className="p-3 min-w-[330px] max-w-[720px] max-h-96 overflow-y-scroll">
         <label
           htmlFor="name"
           className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -82,15 +81,7 @@ const ScheduleModal = ({ ...modalProps }: ScheduleModalProps) => {
         >
           Test
         </button>
-        <div>
-          {testOutput &&
-            Object.keys(testOutput).map((key) => (
-              <span key={key}>
-                {key} {testOutput[key]}
-                <br />
-              </span>
-            ))}
-        </div>
+        {testOutput && <EvaluationResult {...testOutput} />}
         <textarea
           value={data.code}
           onChange={wrapOnChange(hlr.setCode)}
